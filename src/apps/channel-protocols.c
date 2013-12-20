@@ -1,7 +1,7 @@
 
 #include "ws-apps.h"
 
-const struct libwebsocket_protocols wsapps_protocols[] = {
+struct libwebsocket_protocols wsapps_protocols[] = {
     /* first protocol must always be HTTP handler */
 
     {

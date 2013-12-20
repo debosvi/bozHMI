@@ -15,7 +15,7 @@ enum wsapps_protocols_e {
     PROTOCOL_COUNT
 };
 
-extern const struct libwebsocket_protocols wsapps_protocols[];
+extern struct libwebsocket_protocols wsapps_protocols[];
 
 struct per_session_data__http {
     int fd;

@@ -121,6 +121,8 @@ int main(int argc, char **argv) {
 
     info.iface = iface;
     info.protocols = (struct libwebsocket_protocols*)wsapps_protocols;
+    info.extensions = libwebsocket_get_internal_extensions();
+
 
     if (!use_ssl) {
         info.ssl_cert_filepath = NULL;
