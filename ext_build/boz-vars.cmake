@@ -1,10 +1,9 @@
 
 set(USR_DIR /usr/share/boz)
 if(NOT "${BOZ_WIDE_GLOBAL_PATH}" STREQUAL "")
-	set(USR_DIR ${BOZ_WIDE_GLOBAL_PATH})
+    set(USR_DIR ${BOZ_WIDE_GLOBAL_PATH})
 endif()
 message(STATUS "Global install path: " ${USR_DIR})
-
 
 set(BINARY_INSTALL_DIR ${USR_DIR}/bin)
 set(LIBRARY_INSTALL_DIR ${USR_DIR}/lib)
@@ -19,6 +18,9 @@ set(SERVICE_SCAN_DIR /tmp/s6-service)
 set(SERVICES_LOG_INSTALL_DIR ${LOG_INSTALL_DIR}/s6-services)
 set(BOZ_CONFIG_DIR ${CMAKE_BINARY_DIR}/config)
 set(LOAD_CONFIG_DIR ${CMAKE_CURRENT_SOURCE_DIR}/config)
+
+set(BOZ_WEB_HTTP_PORT 8081)
+set(BOZ_CENTRAL_WS_PORT 4444)
 
 SET(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
 SET(CMAKE_INSTALL_RPATH ${LIBRARY_INSTALL_DIR})
@@ -39,18 +41,18 @@ endif()
 message(STATUS "Build mode: "${CMAKE_BUILD_TYPE})
 
 if(EXISTS "${LOAD_CONFIG_DIR}/Config.in")
-add_definitions(-include ${CMAKE_BINARY_DIR}/config/config.h )
+    add_definitions(-include ${CMAKE_BINARY_DIR}/config/config.h )
 endif()
 
-add_definitions(-Wall -Wextra )
+add_definitions(-std=c99 -Wall -Wextra )
 
 set(CMAKE_C_FLAGS_DEBUG "-O0 -ggdb")
 set(CMAKE_C_FLAGS_RELEASE "-O2 -Werror")
 
-set(CMAKE_C_FLAGS "-Wmissing-prototypes -Wbad-function-cast -Wshadow -Wfloat-equal")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wswitch-default")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wdeclaration-after-statement")
-add_definitions(-Wmissing-declarations -Wwrite-strings )
-add_definitions(-Wunknown-pragmas)
-add_definitions(-Wformat-security)
-add_definitions(-Wstrict-aliasing -Wreturn-type -Wmissing-noreturn)
+#set(CMAKE_C_FLAGS "-Wmissing-prototypes -Wbad-function-cast -Wshadow -Wfloat-equal")
+#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wswitch-default")
+#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wdeclaration-after-statement")
+#add_definitions(-Wmissing-declarations -Wwrite-strings )
+#add_definitions(-Wunknown-pragmas)
+#add_definitions(-Wformat-security)
+#add_definitions(-Wstrict-aliasing -Wreturn-type -Wmissing-noreturn)
