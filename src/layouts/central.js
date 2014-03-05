@@ -17,3 +17,15 @@ function central_events(intevent) {
         break;
     }
 }
+
+function browser_recognize() {
+    if (central_connection != null) {
+        var client = "boz-hmibrowser";
+        var command = "{ \"command\" : \"client_recognition\", \"data\" : { \"name\" : \"" + client + "\" } }";
+        console.log("Send command:" + command);
+        central_connection.write(command);
+    }
+    else {
+        alert('Cannot recognise form central since no connection done');
+    }
+}

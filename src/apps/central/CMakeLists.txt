@@ -19,7 +19,9 @@ add_executable(${BOZ_WS_APPS_BIN}
     )
     
 target_link_libraries(${BOZ_WS_APPS_BIN} 
+    datastruct stddjb
     websockets
+    nxjson
     )
 
 install(TARGETS ${BOZ_WS_APPS_BIN}
