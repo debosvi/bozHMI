@@ -1,3 +1,6 @@
 #!/bin/bash
 
+ln -sfn /etc/nginx/sites-available/bozhmi.conf /etc/nginx/sites-enabled/bozhmi
+service nginx reload
+
 ldconfig
