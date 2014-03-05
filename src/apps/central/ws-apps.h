@@ -4,6 +4,12 @@
 
 #include <libwebsockets.h>
 
+#ifndef CENTRAL_WS_PORT
+    #warning "No CENTRAL_WS_PORT defined, use default"
+    #define CENTRAL_WS_PORT 4444
+#else
+#endif
+
 // websocket stuffs
 enum wsapps_protocols_e {
     /* always first */
@@ -17,23 +23,8 @@ enum wsapps_protocols_e {
 
 extern struct libwebsocket_protocols wsapps_protocols[];
 
-struct per_session_data__http {
-    int fd;
-};
-
-extern int callback_http(struct libwebsocket_context *context,
-            struct libwebsocket *wsi,
-            enum libwebsocket_callback_reasons reason,
-            void *user, void *in, size_t len);
-
-struct per_session_data__apps {
-    int fd;
-};
-
-extern int callback_wsapps(struct libwebsocket_context *context,
-            struct libwebsocket *wsi,
-            enum libwebsocket_callback_reasons reason,
-            void *user, void *in, size_t len);
+#include "channel-http.h"
+#include "channel-apps.h"
 
 // others stuffs
 extern int force_exit;

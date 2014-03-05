@@ -48,7 +48,7 @@ int main(int argc, char **argv) {
 #endif
 
     memset(&info, 0, sizeof(struct lws_context_creation_info));
-    info.port = 7681;
+    info.port = CENTRAL_WS_PORT;
 
     while (n >= 0) {
         n = getopt_long(argc, argv, "ci:hsp:d:Dr:", options, NULL);

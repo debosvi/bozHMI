@@ -4,7 +4,7 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 
-#include "ws-apps.h"
+#include "channel-http.h"
 
 struct serveable {
     const char *urlpath;
@@ -116,6 +116,7 @@ int callback_http(struct libwebsocket_context *context,
         /* kill the connection after we sent one file */
         return -1;
 
+#if 0
     case LWS_CALLBACK_HTTP_WRITEABLE:
         /*
          * we can send more of whatever it is we were sending
@@ -167,6 +168,7 @@ bail:
 #endif
         /* if we returned non-zero from here, we kill the connection */
         break;
+#endif
 
     default:
         break;

@@ -4,7 +4,7 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 
-#include "ws-apps.h"
+#include "channel-apps.h"
 
 int callback_wsapps(struct libwebsocket_context *context,
         struct libwebsocket *wsi,
