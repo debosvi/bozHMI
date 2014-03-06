@@ -35,9 +35,18 @@ extern "C" {
 #include "nxjson.h"
 
 // redefine NX_JSON_CALLOC & NX_JSON_FREE to use custom allocator
-#ifndef NX_JSON_CALLOC
-#define NX_JSON_CALLOC() calloc(1, sizeof(nx_json))
-#define NX_JSON_FREE(json) free((void*)(json))
+#ifndef NX_JSON_ALLOC_STD
+    #define NX_JSON_CALLOC() calloc(1, sizeof(nx_json))
+    #define NX_JSON_FREE(json) free((void*)(json))
+#else
+    #undef NX_JSON_CALLOC
+    #include "skarnet/gensetdyn.h"
+    static gensetdyn nx_json_nodes = GENSETDYN_ZERO;
+
+    static nx_json* nx_json_ska_alloc(void);
+    static void nx_json_ska_free(nx_json*);
+    #define NX_JSON_CALLOC() nx_json_ska_alloc()
+    #define NX_JSON_FREE(json) nx_json_ska_free((nx_json*)(json))
 #endif
 
 // redefine NX_JSON_REPORT_ERROR to use custom error reporting
@@ -48,6 +57,16 @@ extern "C" {
 #define IS_WHITESPACE(c) ((unsigned char)(c)<=(unsigned char)' ')
 
 static const nx_json dummy = { NX_JSON_NULL };
+
+__attribute__((constructor)) 
+static void init(void) {
+    gensetdyn_init(&nx_json_nodes, sizeof(nx_json), 8, 0, 8);
+}
+
+__attribute__((destructor)) 
+static void term(void) {
+    gensetdyn_free(&nx_json_nodes);
+}
 
 static nx_json *create_json(nx_json_type type, const char *key, nx_json * parent) {
     nx_json *js = NX_JSON_CALLOC();
@@ -485,6 +504,25 @@ const nx_json *nx_json_item(const nx_json * json, int idx) {
     return &dummy;              // never return null
 }
 
+#ifdef NX_JSON_ALLOC_STD
+
+nx_json* nx_json_ska_alloc(void) {
+    unsigned int idx;
+    if(!gensetdyn_new(&nx_json_nodes, &idx))
+        return NULL;
+
+    nx_json *p=(nx_json*)gensetdyn_p(&nx_json_nodes, idx);
+    memset(p, 0, sizeof(nx_json));
+    p->alloc_idx=idx;
+    return p;
+}
+
+void nx_json_ska_free(nx_json* p) {
+    assert(p);
+    gensetdyn_delete(&nx_json_nodes, p->alloc_idx);
+}
+
+#endif
 
 #ifdef  __cplusplus
 }

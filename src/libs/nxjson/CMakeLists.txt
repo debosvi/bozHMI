@@ -1,16 +1,4 @@
 
-add_definitions(-D_XOPEN_SOURCE=500)
+add_subdirectory(src)
+add_test_if_enable(test BOZ_GLOBAL_TEST)
 
-file(COPY nxjson.h
-    DESTINATION ${PROJECT_BINARY_DIR}/include
-    USE_SOURCE_PERMISSIONS
-    )
-
-add_library(nxjson SHARED
-    nxjson.c
-    )
-
-install(TARGETS nxjson
-    DESTINATION ${LIBRARY_INSTALL_DIR}
-    PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ GROUP_WRITE WORLD_READ
-    )

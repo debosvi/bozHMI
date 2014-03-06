@@ -24,6 +24,7 @@
 extern "C" {
 #endif
 
+#define NX_JSON_ALLOC_STD
 
 typedef enum nx_json_type {
   NX_JSON_NULL,    // this is null value
@@ -45,6 +46,10 @@ typedef struct nx_json {
   struct nx_json* child;   // points to first child
   struct nx_json* next;    // points to next child
   struct nx_json* last_child;
+
+#ifdef NX_JSON_ALLOC_STD
+  unsigned int alloc_idx;
+#endif
 } nx_json;
 
 typedef int (*nx_json_unicode_encoder)(unsigned int codepoint, char* p, char** endp);

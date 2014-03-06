@@ -15,11 +15,11 @@ include_directories (${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 #add_subdirectory(include)
 
-add_subdirectory(configs)
-add_subdirectory(src)
-
 # to be removed later
 set(BOZ_GLOBAL_TEST y)
+
+add_subdirectory(configs)
+add_subdirectory(src)
 
 add_test_if_enable(test BOZ_GLOBAL_TEST)
 

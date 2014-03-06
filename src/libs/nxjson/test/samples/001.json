@@ -1,0 +1,7 @@
+{ 
+    "command" : "client_recognition", 
+    "data" : { 
+        "name" : "toto", 
+        "subname" : "titi" 
+    }
+}
