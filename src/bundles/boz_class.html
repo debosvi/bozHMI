@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+    <meta charset="ISO-8859-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <title>boz js class</title>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script src="boz_class.js"></script>
+    <script src="boz_class_other.js"></script>
+	<script type="text/javascript">
+		function bozinit() {
+			nc1 = new bozClass();
+			nc1.create('maindiv', 'item1', 'bozclass.svg', '', '66px', '66px');
+			nc1.show();
+			nc2 = new bozClass2();
+			nc2.create('maindiv', 'item2', 'bozclass.svg', '', '66px', '66px');
+			nc2.bg[1] = 'bozclass2.svg'
+			nc2.show();
+		}
+    </script>
+	
+</head>
+<body onload="javascript:bozinit();">
+<h1>boz js class</h1>
+
+<div id="maindiv" style="float: left; position: absolute;">
+</div>
+
+</body>
+</html>
