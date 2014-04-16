@@ -1,33 +1,41 @@
 #!/usr/bin/env node
 
 var WebSocketServer = require('websocket').server;
-var http = require('http');
 var fileSystem = require('fs');
 var path = require('path');
 var port = 8081;
 
-var server = http.createServer(function(request, response) {
-    console.log((new Date()) + ' Received request for ' + request.url);
+var http = require('http');
+var auth = require('http-auth');
+var basic = auth.basic(
+    { realm: "boz HMI." }, 
+    function (username, password, callback) { // Custom authentication method.
+        callback(username === "admin" && password === "Admin");
+    }
+);
 
-    if(request.url === "/index.html") {
+var server = http.createServer(basic, function(req, res) {
+    console.log((new Date()) + ' Received request for ' + req.url);
+
+    if(req.url === "/index.html") {
         var filePath = path.join(__dirname, 'index.html');
         var stat = fileSystem.statSync(filePath);
 
         console.log("read file: " + filePath);
         console.log("file size : " + stat);
 
-        response.writeHead(200, {
+        res.writeHead(200, {
             'Content-Type': 'text/html',
             'Content-Length': stat.size
             });
 
         var readStream = fileSystem.createReadStream(filePath);
         // We replaced all the event handlers with a simple call to readStream.pipe()
-        readStream.pipe(response);
+        readStream.pipe(res);
         }
-        else {
-        response.writeHead(404);
-        response.end();
+    else {
+        res.writeHead(404);
+        res.end();
     }
 });
 
