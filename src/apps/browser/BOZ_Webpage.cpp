@@ -19,11 +19,11 @@
 #include <QDir>
 #include <QLibrary>
 
-#include <QCoreApplication>
 #include <QNetworkProxyFactory>
+#include <QWebView>
 #include <QWebFrame>
-#include <QVBoxLayout>
-#include <QPushButton>
+//#include <QNetworkAccessManager>
+#include <QAuthenticator>
 
 #include "BOZ_Webpage.h"
 
@@ -32,7 +32,7 @@
 BOZ_Webpage::BOZ_Webpage(QUrl &url) : _view(0) {
     /* use of http_proxy & https_proxy */
     QNetworkProxyFactory::setUseSystemConfiguration(true);
-    
+
     _view = new QWebView();
     _view->setPage(this);
     _view->page()->settings()->setAttribute(QWebSettings::PluginsEnabled, true);
@@ -46,12 +46,20 @@ BOZ_Webpage::BOZ_Webpage(QUrl &url) : _view(0) {
     _view->load(url);
     //! allows to change window title on content title change
     connect(_view, SIGNAL(titleChanged(QString)), SLOT(adjustTitle(QString)));  
+    connect(_view->page()->networkAccessManager(), SIGNAL(authenticationRequired(QNetworkReply*, QAuthenticator*)), SLOT(provideAuthentication(QNetworkReply*,QAuthenticator*)));
     
     _view->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
     _view->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal, Qt::ScrollBarAlwaysOff);
 
     _view->resize(1024,768);
     _view->show();
+}
+
+void BOZ_Webpage::provideAuthentication(QNetworkReply *reply, QAuthenticator *auth) {
+    Q_UNUSED(reply);
+    qDebug("%s", __PRETTY_FUNCTION__);
+    auth->setUser("admin");
+    auth->setPassword("Admin");
 }
 
 QObject* BOZ_Webpage::createPlugin(const QString & classid, const QUrl & url, const QStringList & paramNames, const QStringList & paramValues) {
@@ -128,9 +136,8 @@ QObject* BOZ_Webpage::createPlugin(const QString & classid, const QUrl & url, co
     return NULL;
 }
 
-void BOZ_Webpage::adjustTitle(QString title )
-{
-    qDebug("%s: title (%s)", __FUNCTION__, title.toLatin1().data());
+void BOZ_Webpage::adjustTitle(QString title ) {
+    qDebug("%s: title (%s)", __PRETTY_FUNCTION__, title.toLatin1().data());
     _view->setWindowTitle(_view->title() + " : " + title);
 }
 

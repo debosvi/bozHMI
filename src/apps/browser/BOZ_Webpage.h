@@ -17,7 +17,9 @@
  */
  
 #include <QWebPage>
-#include <QWebView>
+
+class QWebView;
+class QAuthenticator;
 
 /*!
  * \class BOZ_Webpage 
@@ -39,6 +41,8 @@ protected slots:
      *  \param title : title to set
      */
     void adjustTitle(QString title);
+
+    void provideAuthentication(QNetworkReply *reply, QAuthenticator *auth);
     
 protected:
     /*!
