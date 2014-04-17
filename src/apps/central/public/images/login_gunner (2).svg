@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Generator: Adobe Illustrator 16.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.2" baseProfile="tiny" id="t_button" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 x="0px" y="0px" width="128px" height="128px" viewBox="0 0 128 128"  enable-background="new 0 0 128 128" xml:space="preserve">
+    <script type="text/ecmascript">
+    <![CDATA[
+        var enableZoom = true;
+
+        document.enable = function() {
+            enableZoom = true;
+            document.getElementById('button_generic').setAttribute('opacity', 1); 
+        }
+
+        document.disable = function() {
+            enableZoom = false;
+            document.getElementById('button_generic').setAttribute('opacity', 0.35); 
+        }
+
+        document.select = function() {
+            document.getElementById('bgsel').setAttribute('display', 'block'); 
+        }
+
+        document.unselect = function() {
+            document.getElementById('bgsel').setAttribute('display', 'none'); 
+        }
+
+        function applyOver(evt) {
+            if(enableZoom)
+                document.getElementById('button_generic').setAttribute('transform', 'translate(-6.4,-6.4) scale(1.1)'); 
+        }  
+
+        function applyOut(evt) {
+            if(enableZoom)
+                document.getElementById('button_generic').setAttribute('transform', 'scale(1)');
+        }  
+
+        document.getElementById("t_button").addEventListener("click", sendClickToParentDocument, false);
+
+        function sendClickToParentDocument(evt) {
+            // SVGElementInstance objects aren't normal DOM nodes, so fetch the corresponding 'use' element instead
+            var target = evt.target;
+            if(target.correspondingUseElement) {
+                target = target.correspondingUseElement;
+            }
+
+            // call a method in the parent document if it exists
+            if (window.parent.videoLiveClicked) {
+                window.parent.videoLiveClicked(target, "t_vid_type_live");
+                applyOut(evt);
+            }
+        }
+    ]]>
+    </script>
+  
+    <g id="button_generic">
+        <defs>
+            <!-- right U template-->
+            <g id="out" >
+				<path d="M30.876,114.062c-1.977-5.063-3.833-10.165-5.697-15.265l-2.741-7.667l-2.688-7.684
+				c-1.805-5.119-3.509-10.27-5.265-15.404L9.375,52.589l-0.409-1.235l1.059-0.77l6.554-4.76l6.604-4.689
+				c1.097-0.787,2.22-1.539,3.328-2.31l3.335-2.299l6.671-4.599l6.676-4.592c2.221-1.536,4.46-3.049,6.667-4.604
+				c2.204-1.561,4.422-3.1,6.613-4.677l6.566-4.742l0.355-0.257l0.354,0.257l6.559,4.766l6.597,4.716l13.292,9.295l13.328,9.247
+				c4.435,3.094,8.841,6.226,13.242,9.365l1.043,0.744l-0.395,1.263l-9.682,31.022l-2.488,7.733l-2.501,7.729l-5.124,15.42
+				l-0.467,1.406l-1.433-0.023l-16.164-0.254c-5.388-0.124-10.776-0.199-16.164-0.378l-16.164-0.478
+				c-5.388-0.231-10.776-0.396-16.164-0.687l-0.139-0.008L30.876,114.062z M31.218,113.794c5.337-0.287,10.675-0.451,16.013-0.681
+				l16.164-0.478c5.388-0.179,10.776-0.254,16.164-0.378l16.164-0.254l-1.899,1.382l4.866-15.503l2.494-7.731l2.507-7.728
+				l10.299-30.823l0.648,2.006c-4.316-3.254-8.628-6.515-12.912-9.814l-12.826-9.931l-12.861-9.883l-6.48-5.014L63.04,14h0.709
+				l-6.511,4.959c-2.168,1.608-4.308,3.327-6.463,4.953c-2.152,1.631-4.272,3.34-6.411,4.99l-6.401,4.986l-6.406,4.97l-3.203,2.485
+				c-1.071,0.822-2.127,1.666-3.21,2.472l-6.472,4.873l-6.523,4.801l0.65-2.005l4.878,15.529c1.575,5.193,3.2,10.369,4.726,15.578
+				l2.307,7.807l2.254,7.824C28.417,103.401,29.875,108.579,31.218,113.794z"/>  
+			</g>
+			<g id="zebra">
+				<line fill="none" stroke-linecap="round" stroke-width="6" stroke-miterlimit="10" x1="64" y1="64" x2="34" y2="79"/>
+				<line fill="none" stroke-linecap="round" stroke-width="6" stroke-miterlimit="10" x1="64" y1="74" x2="36" y2="88"/>
+				<line fill="none" stroke-linecap="round" stroke-width="6" stroke-miterlimit="10" x1="64" y1="84" x2="38" y2="97"/>
+				<line fill="none" stroke-linecap="round" stroke-width="6" stroke-miterlimit="10" x1="64" y1="64" x2="94" y2="79"/>
+				<line fill="none" stroke-linecap="round" stroke-width="6" stroke-miterlimit="10" x1="64" y1="74" x2="92" y2="88"/>
+				<line fill="none" stroke-linecap="round" stroke-width="6" stroke-miterlimit="10" x1="64" y1="84" x2="90" y2="97"/>
+				<path fill="#CCCCCC" d="M39.493,48.114c0.809-0.573,1.81-1.194,2.959-1.751c2.082-1.01,3.752-1.27,4.974-1.018
+					c1.237,0.254,2.119,0.965,2.536,2.218c0.42,1.265,0.222,2.472-0.443,3.521c-0.669,1.055-1.995,2.024-3.819,2.932
+					c-0.864,0.43-1.596,0.787-2.226,1.076C41.882,52.3,41.085,50.905,39.493,48.114z M44.289,53.716
+					c0.332-0.121,0.789-0.344,1.273-0.581c2.648-1.297,3.71-2.965,2.96-5.029c-0.655-1.803-2.622-2.482-5.639-1.022
+					c-0.737,0.357-1.267,0.686-1.61,0.936C42.479,50.299,43.082,51.438,44.289,53.716z"/>
+				<path fill="#CCCCCC" d="M50.737,43.365c0.739-0.326,1.833-0.679,2.896-0.919c1.647-0.372,2.765-0.333,3.575,0
+					c0.652,0.269,1.063,0.776,1.147,1.4c0.145,1.068-0.695,1.898-1.804,2.395c0.002,0.014,0.004,0.02,0.007,0.034
+					c0.889,0.061,1.482,0.569,1.859,1.367c0.507,1.074,0.857,1.825,1.108,2.111c-0.543,0.069-0.814,0.107-1.355,0.193
+					c-0.203-0.201-0.549-0.86-1.014-1.808c-0.512-1.045-1.178-1.377-2.458-1.126c-0.528,0.119-0.792,0.183-1.317,0.317
+					c0.35,1.371,0.526,2.056,0.876,3.427c-0.516,0.132-0.773,0.201-1.286,0.349C52.077,48.009,51.63,46.462,50.737,43.365z
+					 M53.183,46.555c0.58-0.148,0.871-0.218,1.455-0.348c1.524-0.339,2.401-1.096,2.248-2.016c-0.173-1.04-1.369-1.328-2.969-0.977
+					c-0.731,0.16-1.24,0.343-1.471,0.452C52.74,44.822,52.888,45.4,53.183,46.555z"/>
+				<path fill="#CCCCCC" d="M61.843,41.339c0.2,3.26,0.3,4.889,0.5,8.15c-0.528,0.032-0.792,0.052-1.318,0.101
+					c-0.299-3.253-0.449-4.879-0.748-8.132C60.904,41.4,61.216,41.377,61.843,41.339z"/>
+				<path fill="#CCCCCC" d="M66.899,49.45c-1.192-3.322-1.917-4.968-3.611-8.18c0.678-0.022,1.018-0.027,1.696-0.027
+					c0.758,1.609,1.105,2.42,1.745,4.054c0.441,1.119,0.788,2.133,1.009,3.105c0.013,0.001,0.022,0.001,0.035,0.002
+					c0.354-0.924,0.871-1.921,1.465-2.938c0.9-1.54,1.379-2.299,2.405-3.793c0.667,0.086,1,0.135,1.664,0.243
+					c-2.25,2.943-3.24,4.478-4.952,7.622C67.773,49.493,67.482,49.476,66.899,49.45z"/>
+				<path fill="#CCCCCC" d="M79.434,47.837c-1.668-0.535-2.511-0.763-4.211-1.139c-0.255,1.15-0.383,1.724-0.638,2.874
+					c1.776,0.394,2.657,0.636,4.396,1.214c-0.111,0.336-0.17,0.502-0.281,0.838c-2.211-0.735-3.338-1.025-5.608-1.456
+					c0.608-3.21,0.911-4.813,1.521-8.023c2.592,0.491,3.879,0.819,6.405,1.645c-0.11,0.336-0.163,0.505-0.273,0.842
+					c-1.889-0.617-2.847-0.877-4.775-1.305c-0.224,1.008-0.335,1.51-0.559,2.518c1.731,0.384,2.591,0.617,4.289,1.162
+					C79.593,47.339,79.54,47.505,79.434,47.837z"/>
+				<path fill="#CCCCCC" d="M83.189,44.671c0.792,0.183,1.89,0.561,2.9,1.013c1.565,0.701,2.463,1.415,2.929,2.177
+					c0.375,0.614,0.406,1.272,0.099,1.822c-0.526,0.941-1.72,1.084-2.93,0.805c-0.007,0.013-0.008,0.021-0.015,0.033
+					c0.692,0.591,0.873,1.358,0.701,2.226c-0.231,1.168-0.396,1.983-0.361,2.366c-0.491-0.28-0.736-0.416-1.233-0.679
+					c-0.046-0.285,0.066-1.023,0.257-2.063c0.21-1.146-0.135-1.819-1.329-2.394c-0.502-0.225-0.755-0.334-1.262-0.543
+					c-0.54,1.308-0.813,1.961-1.354,3.269c-0.498-0.206-0.746-0.304-1.248-0.494C81.482,49.193,82.05,47.686,83.189,44.671z
+					 M83.251,48.694c0.56,0.231,0.838,0.353,1.392,0.603c1.446,0.653,2.625,0.587,3.054-0.241c0.485-0.936-0.319-1.897-1.836-2.586
+					c-0.692-0.314-1.22-0.476-1.472-0.528C83.933,47.043,83.706,47.592,83.251,48.694z"/>
+			</g>
+		</defs>
+		
+		<!-- shadow dark/white outbound -->
+        <use xlink:href="#out" fill="#000000" opacity="0.7" transform="translate(2,2)" />
+        
+        <!-- white right U -->
+        <use xlink:href="#out" fill="#CCCCCC" />
+		
+		<!-- shadow dark/white outbound -->
+        <use xlink:href="#zebra" stroke="#000000" opacity="0.7" transform="translate(2,2)" />
+        
+        <!-- white right U -->
+        <use xlink:href="#zebra" stroke="#CCCCCC" />
+
+		
+		<rect x="0" y="0" width="128px" height="128px" stroke-width="1" fill="#000000" opacity="0" 
+            onmouseover="applyOver(evt);" 
+            onmouseout="applyOut(evt);"
+        />
+	</g>
+</svg>
