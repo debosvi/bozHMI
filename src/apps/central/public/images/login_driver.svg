@@ -5,50 +5,12 @@
 	 x="0px" y="0px" width="128px" height="128px" viewBox="0 0 128 128"  enable-background="new 0 0 128 128" xml:space="preserve">
     <script type="text/ecmascript">
     <![CDATA[
-        var enableZoom = true;
-
         document.enable = function() {
-            enableZoom = true;
             document.getElementById('button_generic').setAttribute('opacity', 1); 
         }
 
         document.disable = function() {
-            enableZoom = false;
             document.getElementById('button_generic').setAttribute('opacity', 0.35); 
-        }
-
-        document.select = function() {
-            document.getElementById('bgsel').setAttribute('display', 'block'); 
-        }
-
-        document.unselect = function() {
-            document.getElementById('bgsel').setAttribute('display', 'none'); 
-        }
-
-        function applyOver(evt) {
-            if(enableZoom)
-                document.getElementById('button_generic').setAttribute('transform', 'translate(-6.4,-6.4) scale(1.1)'); 
-        }  
-
-        function applyOut(evt) {
-            if(enableZoom)
-                document.getElementById('button_generic').setAttribute('transform', 'scale(1)');
-        }  
-
-        document.getElementById("t_button").addEventListener("click", sendClickToParentDocument, false);
-
-        function sendClickToParentDocument(evt) {
-            // SVGElementInstance objects aren't normal DOM nodes, so fetch the corresponding 'use' element instead
-            var target = evt.target;
-            if(target.correspondingUseElement) {
-                target = target.correspondingUseElement;
-            }
-
-            // call a method in the parent document if it exists
-            if (window.parent.videoLiveClicked) {
-                window.parent.videoLiveClicked(target, "t_vid_type_live");
-                applyOut(evt);
-            }
         }
     ]]>
     </script>
@@ -111,21 +73,15 @@
 		</defs>
 		
 		<!-- shadow dark/white outbound -->
-        <use xlink:href="#out" fill="#000000" opacity="0.7" transform="translate(2,2)" />
-        
-        <!-- white right U -->
-        <use xlink:href="#out" fill="#CCCCCC" />
-		
-		<!-- shadow dark/white outbound -->
-        <use xlink:href="#zebra" stroke="#000000" opacity="0.7" transform="translate(2,2)" />
-        
-        <!-- white right U -->
-        <use xlink:href="#zebra" stroke="#CCCCCC" />
-
-		
-		<rect x="0" y="0" width="128px" height="128px" stroke-width="1" fill="#000000" opacity="0" 
-            onmouseover="applyOver(evt);" 
-            onmouseout="applyOut(evt);"
-        />
+            <use xlink:href="#out" fill="#000000" opacity="0.7" transform="translate(2,2)" />
+            
+            <!-- white right U -->
+            <use xlink:href="#out" fill="#CCCCCC" />
+                    
+                    <!-- shadow dark/white outbound -->
+            <use xlink:href="#zebra" stroke="#000000" opacity="0.7" transform="translate(2,2)" />
+            
+            <!-- white right U -->
+            <use xlink:href="#zebra" stroke="#CCCCCC" />
 	</g>
 </svg>

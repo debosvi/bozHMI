@@ -7,8 +7,12 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-    req.session.username = req.body.username;
-    res.redirect("/");
+    console.log("login post data: (" + JSON.stringify(req.body) + ")");
+    if(req.body.login)
+        req.session.login = req.body.login;
+    else
+        req.session.login = "";
+    res.redirect('/');
 });
 
 module.exports = router;
