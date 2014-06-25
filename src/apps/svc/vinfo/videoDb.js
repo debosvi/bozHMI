@@ -26,15 +26,12 @@ var videoDb = Class({
             sqlstr = "CREATE TABLE IF NOT EXISTS videos (";
             sqlstr += "id INTEGER PRIMARY KEY AUTOINCREMENT,";
             sqlstr += "name VARCHAR(128),";
-            sqlstr += "uri VARCHAR(255),";
-            sqlstr += "quality VARCHAR(4),";
-            sqlstr += "agent INTEGER,";
-            sqlstr += "type INTEGER,";
-            sqlstr += "date INTEGER,";
-            sqlstr += "state INTEGER,";
-            sqlstr += "origin INTEGER,";
-            sqlstr += "backup INTEGER";
+            sqlstr += "uri VARCHAR(255)";
             sqlstr += ");";
+            sqlstr += "INSERT INTO videos VALUES(?, 'CAM1', 'rtsp://localhost:443/cam1.mp4');";
+            sqlstr += "INSERT INTO videos VALUES(?, 'CAM2', 'rtsp://localhost:443/cam2.mp4');";
+            sqlstr += "INSERT INTO videos VALUES(?, 'CAM3', 'rtsp://localhost:443/cam3.mp4');";
+            sqlstr += "INSERT INTO videos VALUES(?, 'CAM4', 'rtsp://localhost:443/cam4.mp4');";
             db.run(sqlstr); // Run the query without returning anything
 
             var data = db.export();
