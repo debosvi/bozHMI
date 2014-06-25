@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+        p { 
+            text-align: center;
+            font-size: 50px;
+            color: #CCCCCC;
+        }
+
+        .global {
+            position: fixed;
+            margin-left: auto;
+            margin-right: auto;
+            width: 1024px;
+            height: 768px;
+            background-color: black;
+            border-radius: 2px;
+            border-width: 2px;
+            border-color: darkgray;
+        }
+    </style>
+    <script>
+        function get_appropriate_ws_url() {
+            var pcol;
+            var u = document.URL;
+
+            /*
+             * We open the websocket encrypted if this page came on an
+             * https:// url itself, otherwise unencrypted
+             */
+
+            if (u.substring(0, 5) == "https") {
+                pcol = "wss://";
+                u = u.substr(8);
+            } 
+            else if (u.substring(0, 4) == "http") {
+                pcol = "ws://";
+                u = u.substr(7);
+            }
+            else if (u.substring(0, 4) == "file") {
+                pcol = "ws://";
+                u = u.substr(7);
+            }
+
+            u = u.split('/');
+
+            var url = pcol + u[0] ;
+
+            //    url = pcol + "localhost:8081";
+            /* + "/xxx" bit is for IE10 workaround */
+            console.log("url: " + url);
+
+            return url;
+        }
+
+        var socket_di;
+
+        if (typeof MozWebSocket != "undefined") {
+            socket_di = new MozWebSocket(get_appropriate_ws_url(),
+                    "echo-protocol");
+        } else {
+            socket_di = new WebSocket(get_appropriate_ws_url(),
+                    "echo-protocol");
+        }
+
+
+        try {
+            socket_di.onopen = function() {
+                console.log("ws open");
+                sendNumber();
+            } 
+
+            socket_di.onmessage = function got_packet(msg) {
+                console.log("ws msg: " + msg.data);
+            } 
+
+            socket_di.onclose = function(){
+                console.log("ws close");
+            }
+        } catch(exception) {
+            alert('<p>Error' + exception);  
+        }
+
+        function sendNumber() {
+            var number = Math.round(Math.random() * 0xFFFFFF);
+            socket_di.send(number.toString());
+            setTimeout(sendNumber, 1000);
+        }
+
+    </script>
+  </head>
+    <body>
+      <div class="global" id="mdiv">
+          <h1><%= title %></h1>
+          <p>Welcome to <%= login %></p>
+       </div>
+  </body>
+</html>

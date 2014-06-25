@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+        p { 
+            text-align: center;
+            font-size: 50px;
+            color: #CCCCCC;
+        }
+
+        .global {
+            margin-top: 60px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 430px;
+            background-color: brown;
+            border-radius: 10px;
+            border-style: outset;
+            border-width: 2px;
+            border-color: darkgray;
+        }
+
+        .buts {
+            margin-top: 40px;
+        }
+
+        .isub {
+            background-color: inherit;
+            border-style: inset;
+            border-width: 1px;
+            border-radius: 5px;
+            border-color: lightcoral;
+            width: 128px;
+            height: 128px;
+            margin: 6px;
+            padding: 0px;
+        }
+    </style>
+  </head>
+  <body>
+
+      <div class="global" id="mdiv">
+      <p>LOGIN</p>
+      <form method="post">
+        <div class="buts">
+          <button type="submit" class="isub" name="login" value="driver" alt="driver">
+            <img type="image/svg+xml" src="images/login_driver.svg">
+            </img>
+          </button>
+          <button type="submit" class="isub" name="login" value="gunner" alt="gunner">
+            <img type="image/svg+xml" src="images/login_gunner.svg">
+            </img>
+          </button>
+          <button type="submit" class="isub" name="login" value="chief" alt="chief">
+            <img type="image/svg+xml" src="images/login_chief.svg">
+            </img>
+          </button>
+        </div>
+      </form>
+      </div>
+
+  </body>
+</html>
