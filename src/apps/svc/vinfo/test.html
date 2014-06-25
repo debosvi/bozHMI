@@ -1,0 +1,22 @@
+<html>
+<head>
+    <script type="text/javascript">
+        var ws = null;
+        var cmd="{ \"videocollection\": { \"command\" : \"get_collection\", \"type\" : \"live\", \"agent\" : \"all\", \"page_number\" : 0, \"num_of_elements\" : -1 } }";
+        function sendCmd() {
+            ws = new WebSocket("ws://localhost:8080/", "videoinfo-channel");
+            if (ws === null) {
+                console.error("Failed to open websocket");
+                return;
+            }
+
+            ws.onopen = function() {
+                ws.send(cmd);
+            };
+        }
+    </script>
+</head>
+<body onload="sendCmd()">
+    <h1>Test WS video info</h1>
+</body>
+</html>

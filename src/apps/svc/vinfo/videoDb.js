@@ -23,9 +23,18 @@ var videoDb = Class({
             // data is an Uint8Array representing an SQLite database file
 
             // Execute some sql
-            sqlstr = "CREATE TABLE hello (a int, b char);";
-            sqlstr += "INSERT INTO hello VALUES (0, 'hello');"
-            sqlstr += "INSERT INTO hello VALUES (1, 'world');"
+            sqlstr = "CREATE TABLE IF NOT EXISTS videos (";
+            sqlstr += "id INTEGER PRIMARY KEY AUTOINCREMENT,";
+            sqlstr += "name VARCHAR(128),";
+            sqlstr += "uri VARCHAR(255),";
+            sqlstr += "quality VARCHAR(4),";
+            sqlstr += "agent INTEGER,";
+            sqlstr += "type INTEGER,";
+            sqlstr += "date INTEGER,";
+            sqlstr += "state INTEGER,";
+            sqlstr += "origin INTEGER,";
+            sqlstr += "backup INTEGER";
+            sqlstr += ");";
             db.run(sqlstr); // Run the query without returning anything
 
             var data = db.export();
