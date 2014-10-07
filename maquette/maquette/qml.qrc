@@ -4,5 +4,6 @@
         <file>resources/images/tux.svg</file>
         <file>AppItem.qml</file>
         <file>componentCreation.js</file>
+        <file>AppIconsBar.qml</file>
     </qresource>
 </RCC>
