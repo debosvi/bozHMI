@@ -33,7 +33,7 @@ Window {
         height: 50
         text: "add icon"
         onClicked: {
-            MyScript.createIconObjects();
+            appIconsBar.addElem("qrc:///resources/images/tux.svg");
         }
     }
 
@@ -42,5 +42,5 @@ Window {
         anchors.centerIn: parent
     }
 
-    Component.onCompleted: MyScript.createIconObjects();
+   // Component.onCompleted: MyScript.createIconObjects();
 }
