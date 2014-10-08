@@ -14,22 +14,30 @@ Rectangle {
     Component {
         id: fruitDelegate
         Row {
-            spacing: 50
             Rectangle {
+               // anchors.left: parent.left
+
                 border.color: "green"
                 border.width: 1
                 radius: 50
                 width: 100
                 height: 100
                 Text {
-                    x: parent.left
-                    y: parent.top
                     text: name
                 }
                 Image {
                     anchors.fill: parent
+                    anchors.margins: 5
                     source: url
                     fillMode: Image.PreserveAspectFit
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        console.log("click on:" + name)
+                        fruitModel.remove(index);
+                    }
                 }
             }
         }
@@ -39,10 +47,17 @@ Rectangle {
         anchors.fill: parent
         model: fruitModel
         delegate: fruitDelegate
+        addDisplaced: Transition {
+                NumberAnimation { properties: "x,y"; duration: 1000 }
+            }
     }
 
     function addElem(url) {
-        console.log("Click!")
+        console.log("addElem")
         fruitModel.append( { name: "app" + fruitModel.count, url: url })
+    }
+    function getCount() {
+        console.log("getCount")
+        return fruitModel.count;
     }
 }

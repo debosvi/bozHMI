@@ -4,5 +4,6 @@
         <file>resources/images/tux.svg</file>
         <file>componentCreation.js</file>
         <file>AppIconsBar.qml</file>
+        <file>resources/images/bsd_colors_logo.png</file>
     </qresource>
 </RCC>

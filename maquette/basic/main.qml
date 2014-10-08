@@ -23,7 +23,9 @@ Window {
         anchors.left: parent.left
         anchors.top: parent.top
         anchors.topMargin: 100
+        anchors.bottomMargin: 100
         anchors.bottom: parent.bottom
+        clip: true
     }
 
     Button {
@@ -33,7 +35,10 @@ Window {
         height: 50
         text: "add icon"
         onClicked: {
-            appIconsBar.addElem("qrc:///resources/images/tux.svg");
+            if(appIconsBar.getCount()%2)
+                appIconsBar.addElem("qrc:///resources/images/tux.svg");
+            else
+                appIconsBar.addElem("qrc:///resources/images/bsd_colors_logo.png");
         }
     }
 
