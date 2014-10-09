@@ -1,10 +1,11 @@
 import QtQuick 2.0
 
 Rectangle {
-    width: 150
+    width: 100
     border.color: "red"
     border.width: 1
     radius: 1
+    color: "black"
 
     ListModel {
         id: fruitModel
@@ -13,7 +14,6 @@ Rectangle {
     Component {
         id: fruitDelegate
         Rectangle {
-            id: toto
             border.color: "green"
             border.width: 1
             radius: 50
@@ -34,25 +34,22 @@ Rectangle {
                 anchors.fill: parent
                 onClicked: {
                     console.log("click on:" + name)
-                    fruitModel.remove(index);
+                    // fruitModel.remove(index);
+                    fruitView.currentIndex = index
                 }
             }
         }
     }
 
-    PathView {
+    ListView {
         id: fruitView
         anchors.fill: parent
         model: fruitModel
         delegate: fruitDelegate
-        path: Path {
-            startX: 100; startY: 50
-            PathArc {
-                x: 100; y: height
-                radiusX: 5; radiusY: height/2
-                direction: PathArc.Counterclockwise
-                useLargeArc: false
-            }
+        highlight: Rectangle {
+            color: "lightsteelblue"
+            radius: 5
+            opacity: 0.8
         }
     }
 
