@@ -23,7 +23,6 @@ Window {
         anchors.left: parent.left
         anchors.top: parent.top
         anchors.topMargin: 100
-        anchors.bottomMargin: 100
         anchors.bottom: parent.bottom
         clip: true
     }
