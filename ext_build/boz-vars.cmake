@@ -38,7 +38,7 @@ else()
     set(CMAKE_BUILD_TYPE DEBUG)
 endif()
 
-message(STATUS "Build mode: "${CMAKE_BUILD_TYPE})
+message(STATUS "Build mode: ${CMAKE_BUILD_TYPE}")
 
 if(EXISTS "${LOAD_CONFIG_DIR}/Config.in")
     add_definitions(-include ${CMAKE_BINARY_DIR}/config/config.h )
