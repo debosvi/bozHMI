@@ -22,20 +22,20 @@ Window {
         MyComponents.ButStates {
             id: myBut
             border { width: 1; color: "red" }
-            pictActive: "qrc:///bouton_plus_active.svg"
-            pictInactive: "qrc:///bouton_plus_inactive.svg"
-            pictDisabled: "qrc:///bouton_plus_off.svg"
-            pictError: "qrc:///bouton_plus_out.svg"
+            pictActive: "qrc:///images/bouton_plus_active.svg"
+            pictInactive: "qrc:///images/bouton_plus_inactive.svg"
+            pictDisabled: "qrc:///images/bouton_plus_off.svg"
+            pictError: "qrc:///images/bouton_plus_out.svg"
         }
         MyComponents.ButStates {
             id: myBut1
             width: 50
             height: 150
             border { width: 1; color: "red" }
-            pictActive: "qrc:///bouton_plus_active.svg"
-            pictInactive: "qrc:///bouton_plus_inactive.svg"
-            pictDisabled: "qrc:///bouton_plus_off.svg"
-            pictError: "qrc:///bouton_plus_out.svg"
+            pictActive: "qrc:///images/bouton_plus_active.svg"
+            pictInactive: "qrc:///images/bouton_plus_inactive.svg"
+            pictDisabled: "qrc:///images/bouton_plus_off.svg"
+            pictError: "qrc:///images/bouton_plus_out.svg"
         }
     }
 
@@ -45,18 +45,22 @@ Window {
         Button {
             id: bActive
             text: "activate"
+            onClicked: myBut.state = 'active'
         }
         Button {
             id: bInactive
             text: "inactivate"
+            onClicked: myBut.state = 'inactive'
         }
         Button {
             id: bDisabled
             text: "disable"
+            onClicked: myBut.state = 'disabled'
         }
         Button {
             id: bError
             text: "error"
+            onClicked: myBut.state = 'error'
         }
     }
 }

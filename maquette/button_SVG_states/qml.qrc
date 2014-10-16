@@ -5,4 +5,10 @@
     <qresource prefix="/components">
         <file>ButStates.qml</file>
     </qresource>
+    <qresource prefix="/images">
+        <file>bouton_plus_active.svg</file>
+        <file>bouton_plus_inactive.svg</file>
+        <file>bouton_plus_off.svg</file>
+        <file>bouton_plus_out.svg</file>
+    </qresource>
 </RCC>
