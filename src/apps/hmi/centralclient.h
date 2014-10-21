@@ -18,6 +18,7 @@ public:
 
 private Q_SLOTS:
     void onConnected();
+    void sendMessage(QString msg);
     void onTextMessageReceived(QString message);
     void onSslErrors(const QList<QSslError> &errors);
 

@@ -23,13 +23,17 @@ void CentralClient::onConnected()
     qDebug() << "WebSocket connected";
     connect(&m_webSocket, &QWebSocket::textMessageReceived,
             this, &CentralClient::onTextMessageReceived);
+}
+
+void CentralClient::sendMessage(QString msg)
+{
+    qDebug() << "WebSocket sendMessage: " << msg;
     m_webSocket.sendTextMessage(QStringLiteral("Hello, world!"));
 }
 
 void CentralClient::onTextMessageReceived(QString message)
 {
     qDebug() << "Message received:" << message;
-    qApp->quit();
 }
 
 void CentralClient::onSslErrors(const QList<QSslError> &errors)

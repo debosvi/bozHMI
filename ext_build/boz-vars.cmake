@@ -44,10 +44,12 @@ if(EXISTS "${LOAD_CONFIG_DIR}/Config.in")
     add_definitions(-include ${CMAKE_BINARY_DIR}/config/config.h )
 endif()
 
-add_definitions(-std=c99 -Wall -Wextra )
+add_definitions(-Wall -Wextra )
 
-set(CMAKE_C_FLAGS_DEBUG "-O0 -ggdb")
+set(CMAKE_C_FLAGS_DEBUG "-std=c99 -O0 -ggdb")
 set(CMAKE_C_FLAGS_RELEASE "-O2 -Werror")
+set(CMAKE_CXX_FLAGS_DEBUG "-O0 -ggdb")
+set(CMAKE_CXX_FLAGS_RELEASE "-O2 -Werror")
 
 #set(CMAKE_C_FLAGS "-Wmissing-prototypes -Wbad-function-cast -Wshadow -Wfloat-equal")
 #set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wswitch-default")

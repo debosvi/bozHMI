@@ -68,6 +68,7 @@ void CentralServer::processTextMessage(QString message)
     QWebSocket *pClient = qobject_cast<QWebSocket *>(sender());
     if (pClient)
     {
+        qDebug() << "Client msg:" << message;
         pClient->sendTextMessage(message);
     }
 }
