@@ -38,3 +38,7 @@ message(STATUS "Qmake where: ${QMAKE_WHERE}")
 
 set(BOZ_QT5_CMAKE_FIND_DIR ${QMAKE_WHERE}/cmake)
 message(STATUS "Qt5 cmake dir: ${BOZ_QT5_CMAKE_FIND_DIR}")
+
+#if(${BOZ_QT5_CMAKE_FIND_DIR})
+    set(CMAKE_PREFIX_PATH ${BOZ_QT5_CMAKE_FIND_DIR} ${CMAKE_PREFIX_PATH})
+#endif()

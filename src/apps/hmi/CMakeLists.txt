@@ -1,30 +1,32 @@
 
-# include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 set(CMAKE_AUTOMOC ON)
 
+set(HMI_BIN boz-hmi)
 
-set(BOZ_APP_HMI_BIN boz-app-hmi)
+set(MAIN_HDRS 
+    centralcentral.h
+    )
 
-set(BOZ_APP_HMI_SRCS 
+set(MAIN_SRCS 
+    centralclient.cpp
     main.cpp
-    bozcentralclient.cpp
     )
 
-set(BOZ_APP_HMI_HDRS 
-    bozcentralclient.h
+QT5_ADD_RESOURCES(RCC_SRCS qml.qrc)
+
+add_executable(${HMI_BIN} 
+    ${RCC_SRCS}
+    ${MOC_SRCS}
+    ${MAIN_SRCS}
     )
 
-add_executable(${BOZ_APP_HMI_BIN} 
-    ${BOZ_APP_HMI_SRCS}
-    )
+qt5_use_modules(${HMI_BIN} Gui Qml WebSockets)
     
-qt5_use_modules(${BOZ_APP_HMI_BIN} Declarative)
-
-target_link_libraries(${BOZ_APP_HMI_BIN} 
-    websockets
+target_link_libraries(${HMI_BIN} 
+    
     )
 
-install(TARGETS ${BOZ_APP_HMI_BIN}
+install(TARGETS ${HMI_BIN}
     DESTINATION ${BINARY_INSTALL_DIR}
     PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ 
     )

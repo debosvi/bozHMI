@@ -1,2 +1,2 @@
 
-add_subdirectory(nxjson)
+#add_subdirectory(nxjson)
