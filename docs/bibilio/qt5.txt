@@ -1,2 +1,8 @@
 // extending qt with qml
 http://qt-project.org/doc/qt-5/qml-extending-tutorial-index.html
+
+// INRIA plugin manager
+http://dtk.inria.fr/blog/?p=502
+git://dtk.inria.fr/tst/tst.git
+
+
